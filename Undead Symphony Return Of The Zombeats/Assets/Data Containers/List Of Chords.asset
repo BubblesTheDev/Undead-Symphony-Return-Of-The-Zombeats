@@ -12,3 +12,64 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 370419db37e60c745afcd40079ec3db6, type: 3}
   m_Name: List Of Chords
   m_EditorClassIdentifier: 
+  possibleChords:
+  - chordElement: 0
+    notesForChord:
+    - buttonColour: 3
+    - buttonColour: 0
+    - buttonColour: 2
+  - chordElement: 0
+    notesForChord:
+    - buttonColour: 3
+    - buttonColour: 2
+    - buttonColour: 0
+  - chordElement: 0
+    notesForChord:
+    - buttonColour: 0
+    - buttonColour: 1
+    - buttonColour: 1
+  - chordElement: 1
+    notesForChord:
+    - buttonColour: 2
+    - buttonColour: 1
+    - buttonColour: 3
+  - chordElement: 1
+    notesForChord:
+    - buttonColour: 2
+    - buttonColour: 3
+    - buttonColour: 3
+  - chordElement: 1
+    notesForChord:
+    - buttonColour: 2
+    - buttonColour: 0
+    - buttonColour: 2
+  - chordElement: 2
+    notesForChord:
+    - buttonColour: 1
+    - buttonColour: 2
+    - buttonColour: 3
+  - chordElement: 2
+    notesForChord:
+    - buttonColour: 1
+    - buttonColour: 0
+    - buttonColour: 1
+  - chordElement: 2
+    notesForChord:
+    - buttonColour: 1
+    - buttonColour: 2
+    - buttonColour: 2
+  - chordElement: 3
+    notesForChord:
+    - buttonColour: 0
+    - buttonColour: 0
+    - buttonColour: 0
+  - chordElement: 3
+    notesForChord:
+    - buttonColour: 0
+    - buttonColour: 2
+    - buttonColour: 1
+  - chordElement: 3
+    notesForChord:
+    - buttonColour: 0
+    - buttonColour: 3
+    - buttonColour: 0

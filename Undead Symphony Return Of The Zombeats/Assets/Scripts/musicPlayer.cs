@@ -7,30 +7,49 @@ public class musicPlayer : MonoBehaviour
 {
 
     public List<note> recentNotes = new List<note>();
-    public int currentNoteCombo, maxNoteCombo;
+    public List<chord> damageChords = new List<chord>();
+    public int currentDamageStoredOnZombeat;
+    public int currentChordCombo;
     public chordAssetList chordList;
 
     private void Update()
     {
         playNote();
         compareChord();
+
+        //Find Player class manager and get class and targeted zombeat
+        //if(Input.GetKeyUp(KeyCode.G)) damageZombeat()
+    }
+
+    void damageZombeat(GameObject zombeat)
+    {
+        foreach (chord damageChord in damageChords)
+        {
+            if (zombeat.GetComponent<zombeatAI>().zombieWeaknessElement == damageChord.chordElement) currentDamageStoredOnZombeat++;
+        }
+        Debug.Log("Attacked Zombeat " + zombeat.name + " with " + currentDamageStoredOnZombeat + " damage");
     }
 
     void compareChord()
     {
-        if(Input.GetKeyUp(KeyCode.G) && recentNotes.Count >= 3)
+        if (recentNotes.Count >= 3)
         {
-            Debug.Log("Compare Chords");
+            //Debug.Log("Compare Chords");
             foreach (chord possibleChord in chordList.possibleChords)
             {
-                if(possibleChord.notesForChord[0].buttonColour == recentNotes[0].buttonColour && possibleChord.notesForChord[1].buttonColour == recentNotes[1].buttonColour && possibleChord.notesForChord[2].buttonColour == recentNotes[2].buttonColour)
+                if (possibleChord.notesForChord[0].buttonColour == recentNotes[0].buttonColour 
+                    && possibleChord.notesForChord[1].buttonColour == recentNotes[1].buttonColour 
+                    && possibleChord.notesForChord[2].buttonColour == recentNotes[2].buttonColour)
                 {
-                    //Damage Enemy With Element
-                    recentNotes.Clear();
-                    Debug.Log("Damaged Enemy With " + possibleChord.chordElement.ToString());
+                    //Store Newly made chord from player
+                    damageChords.Add(new chord(recentNotes[0], recentNotes[1], recentNotes[2], possibleChord.chordElement));
+                    
+
                 }
             }
+            recentNotes.Clear();
         }
+
     }
 
     void playNote()
@@ -63,12 +82,13 @@ public enum buttonColour
 [System.Serializable]
 public class note
 {
+    
     public note(buttonColour pressedButtonColor)
     {
         buttonColour = pressedButtonColor;
     }
-
     public buttonColour buttonColour;
+
 }
 
 [System.Serializable]
@@ -76,4 +96,12 @@ public class chord
 {
     public elements chordElement;
     public note[] notesForChord;
+
+    public chord(note note1, note note2, note note3, elements damageElement)
+    {
+        chordElement = damageElement;
+        notesForChord = new note[3] { note1, note2, note3 };
+    }
+
+
 }
