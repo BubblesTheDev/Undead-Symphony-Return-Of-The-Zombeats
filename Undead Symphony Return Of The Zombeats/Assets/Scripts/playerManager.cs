@@ -14,17 +14,19 @@ public class playerManager : MonoBehaviour
 
     [Header("Targeting")]
     float closestDistance = 999;
-    GameObject zombeatTargeted;
+    public GameObject zombeatTargeted;
 
     [Header("Ui Animation")]
     public float pulseSize;
     public float pulseSpeed;
     public float rotSpeed;
     public Vector3 imageScale;
+    private float startingScale;
 
     private void Awake()
     {
         imageScale = new Vector3(targetSigil.transform.localScale.x, targetSigil.transform.localScale.y, targetSigil.transform.localScale.z);
+        startingScale = targetSigil.transform.localScale.x;
     }
 
     private void Update()
@@ -50,13 +52,13 @@ public class playerManager : MonoBehaviour
         if (zombeatTargeted != null)
         {
             targetSigil.transform.position = zombeatTargeted.transform.position;
-            zombeatTargeted.transform.SetAsLastSibling();
-            targetSigil.transform.SetSiblingIndex(targetSigil.transform.parent.transform.childCount-2);
+            zombeatTargeted.transform.SetSiblingIndex(zombeatTargeted.transform.parent.transform.childCount - 2);
+            targetSigil.transform.SetAsLastSibling();
             
         }
         targetSigil.transform.Rotate(transform.forward, transform.localRotation.z + rotSpeed * Time.deltaTime);
 
-        Vector3 scaleVector = Vector3.one * (1 + pulseSize/2 + (Mathf.Sin(pulseSpeed * Time.time)) * pulseSize/2);
+        Vector3 scaleVector = Vector3.one * (startingScale + pulseSize/2 + (Mathf.Sin(pulseSpeed * Time.time)) * pulseSize/2);
         targetSigil.transform.localScale = scaleVector;
     }
 }

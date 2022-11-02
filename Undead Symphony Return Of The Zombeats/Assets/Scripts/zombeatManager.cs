@@ -14,6 +14,7 @@ public class zombeatManager : MonoBehaviour
     public float maxOffsetDistance = 1;
     public bool canSpawn;
     GameObject currentZombeat;
+
     private void Update()
     {
         difficultyChanger();
@@ -29,7 +30,7 @@ public class zombeatManager : MonoBehaviour
     void difficultyChanger()
     {
         if (difficultyNumber < 1) difficultyNumber = 1;
-        if (timeBetweenSpawns > .75) timeBetweenSpawns = 5 - (difficultyNumber * .35f);
+        if (timeBetweenSpawns > .75f) timeBetweenSpawns = 5 - (difficultyNumber * .35f);
         maxNumZombies = 3 * (1 + Mathf.RoundToInt(difficultyNumber * .15f));
     }
 
@@ -53,7 +54,6 @@ public class zombeatManager : MonoBehaviour
             Destroy(currentZombeat);
 
             currentZombeat = Instantiate(zombeatPrefab, spawnPoint.transform.position + new Vector3(Random.Range(-maxOffsetDistance, maxOffsetDistance), 0, 0), Quaternion.identity, GameObject.Find("WorldSpaceImages").transform);
-
             currentZombeat.GetComponent<zombeatAI>().createZombeat(difficultyNumber);
             zombeats.Add(currentZombeat);
         }

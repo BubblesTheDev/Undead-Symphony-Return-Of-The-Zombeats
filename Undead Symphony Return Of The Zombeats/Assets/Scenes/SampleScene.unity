@@ -263,14 +263,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24a88f1bbe1103a42a9f8f9fbea21a09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  difficultyNumber: 1
+  difficultyNumber: 10
   timeBetweenSpawns: 5
   maxNumZombies: 3
   zombeats: []
   points: 0
   spawnPoint: {fileID: 1313942397}
   zombeatPrefab: {fileID: 1110331771170110763, guid: 0b998ca016e5988408fa724033a94dd9, type: 3}
-  maxOffsetDistance: 4.5
+  maxOffsetDistance: 2.5
   canSpawn: 1
 --- !u!114 &259370132
 MonoBehaviour:
@@ -288,7 +288,8 @@ MonoBehaviour:
   manager: {fileID: 259370131}
   music: {fileID: 259370129}
   targetSigil: {fileID: 1590152118}
-  pulseSize: 0.25
+  zombeatTargeted: {fileID: 0}
+  pulseSize: 0.15
   pulseSpeed: 1.8
   rotSpeed: 15
   imageScale: {x: 1, y: 1, z: 1}
@@ -307,8 +308,8 @@ MonoBehaviour:
   moonObj: {fileID: 1736960133}
   skyPlane: {fileID: 201655078}
   possibleMoons:
-  - {fileID: 21300000, guid: 83ebcf24c9786614caecc519eda50747, type: 3}
-  - {fileID: 21300000, guid: e860314bf0e8e33419283983ddad49cb, type: 3}
+  - {fileID: 21300000, guid: 228c084f272956f479d028bb521e4920, type: 3}
+  - {fileID: 21300000, guid: c7b5c27c9c7367746928d573322ecd6c, type: 3}
   skyColors:
   - {fileID: 21300000, guid: b3306cea5ec89464a9b3242a42916b8d, type: 3}
   - {fileID: 21300000, guid: c12ee05ef387c4a4aa87fa9be9baac82, type: 3}
@@ -319,6 +320,79 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+--- !u!1001 &668262131
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: fd3d7d1b16e7ef243a16884a90bea96b, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fd3d7d1b16e7ef243a16884a90bea96b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fd3d7d1b16e7ef243a16884a90bea96b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fd3d7d1b16e7ef243a16884a90bea96b, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fd3d7d1b16e7ef243a16884a90bea96b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.12
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fd3d7d1b16e7ef243a16884a90bea96b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fd3d7d1b16e7ef243a16884a90bea96b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 14.51
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fd3d7d1b16e7ef243a16884a90bea96b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fd3d7d1b16e7ef243a16884a90bea96b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fd3d7d1b16e7ef243a16884a90bea96b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.70710677
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fd3d7d1b16e7ef243a16884a90bea96b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fd3d7d1b16e7ef243a16884a90bea96b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fd3d7d1b16e7ef243a16884a90bea96b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fd3d7d1b16e7ef243a16884a90bea96b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fd3d7d1b16e7ef243a16884a90bea96b, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fd3d7d1b16e7ef243a16884a90bea96b, type: 3}
+      propertyPath: m_Name
+      value: Alleyway
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fd3d7d1b16e7ef243a16884a90bea96b, type: 3}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -811,7 +885,7 @@ RectTransform:
   m_GameObject: {fileID: 1590152118}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -1.8}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.25, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1453315233}
@@ -835,7 +909,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.19607843}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
