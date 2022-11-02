@@ -1,21 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public class zombeatAI : MonoBehaviour
 {
     public float weaknessChangeChance;
-    public float oneBar, twoBar, threeBar;
     public Vector3 barChances;
     public float pointWorth = 100;
-    public GameObject healthIndicator;
-    public GameObject[] healthStates;
+    public Image healthIndicator;
+    public Sprite[] healthStates;
     public elements zombieWeaknessElement;
     public float moveSpeed;
     public int health;
+    public int maxHealth;
     public int maxHealthBars;
     int currentHealthBars;
+
     public float stoppingDistance;
     public GameObject player;
     public zombeatManager manager;
@@ -32,8 +33,9 @@ public class zombeatAI : MonoBehaviour
     {
         if (isDead) return;
         transform.LookAt(player.transform, Vector3.up);
-        if (Vector3.Distance(transform.position, player.transform.position) <= stoppingDistance) transform.Translate(transform.forward * moveSpeed * Time.deltaTime);
-
+        if (Vector3.Distance(transform.position, player.transform.position) >= stoppingDistance) transform.Translate(-transform.forward * moveSpeed * Time.deltaTime);
+        healthIndicator.sprite = healthStates[currentHealthBars - 1];
+        healthIndicator.fillAmount = health / maxHealth;
     }
 
     public void createZombeat(float difficulty)
@@ -42,24 +44,32 @@ public class zombeatAI : MonoBehaviour
 
         float healthBarChance = Random.Range(.01f, 1f);
 
-        float difficultyChanceChange = Mathf.Clamp(Mathf.Round(-1 + (difficulty / 70f) * 100) / 100, 0, 999);
+        float difficultyChanceChange = Mathf.Clamp(Mathf.Round(-1 + (difficulty / 30f) * 100) / 100, 0, 999);
 
         healthBarChance -= difficultyChanceChange;
-        Debug.Log(difficultyChanceChange);
 
         if (healthBarChance < barChances.z / 100) maxHealthBars = 3;
         else if (healthBarChance < barChances.y / 100) maxHealthBars = 2;
         else if (healthBarChance < barChances.x / 100) maxHealthBars = 1;
         else maxHealthBars = 1;
+        currentHealthBars = maxHealthBars;
 
-        Debug.Log("Zombeat: " + gameObject.name + "'s chances for healthbarNumbers is " + healthBarChance + "%");
-        Debug.Log("Which Means Zombeat: " + gameObject.name + " spawns with " + maxHealthBars + " Healthbars");
+        maxHealth = 1 + Mathf.RoundToInt(1 * (difficulty / 10));
+        health = maxHealth;
+
+        //Debug.Log("Zombeat: " + gameObject.name + "'s chances for healthbarNumbers is " + healthBarChance + "%");
+        //Debug.Log("Which Means Zombeat: " + gameObject.name + " spawns with " + maxHealthBars + " Healthbars");
+
+        
     }
 
     public void takeDamage(int damageTaken)
     {
         health -= damageTaken;
-        if (health <= 0) currentHealthBars--;
+        if (health <= 0)
+        {
+            currentHealthBars--;
+        }
         else if (health <= 0 && currentHealthBars == 1) killZombeat();
     }
 

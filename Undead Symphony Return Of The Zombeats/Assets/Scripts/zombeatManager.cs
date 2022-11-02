@@ -36,7 +36,7 @@ public class zombeatManager : MonoBehaviour
     IEnumerator spawnZombeat(Vector3 spawnPos)
     {
         canSpawn = false;
-        GameObject currentZombeat = Instantiate(zombeatPrefab, spawnPos, Quaternion.identity);
+        currentZombeat = Instantiate(zombeatPrefab, spawnPoint.transform.position + new Vector3(Random.Range(-maxOffsetDistance, maxOffsetDistance), 0, 0), Quaternion.identity, GameObject.Find("WorldSpaceImages").transform);
         currentZombeat.GetComponent<zombeatAI>().createZombeat(difficultyNumber);
         zombeats.Add(currentZombeat);
         yield return new WaitForSeconds(timeBetweenSpawns);
@@ -53,6 +53,7 @@ public class zombeatManager : MonoBehaviour
             Destroy(currentZombeat);
 
             currentZombeat = Instantiate(zombeatPrefab, spawnPoint.transform.position + new Vector3(Random.Range(-maxOffsetDistance, maxOffsetDistance), 0, 0), Quaternion.identity, GameObject.Find("WorldSpaceImages").transform);
+
             currentZombeat.GetComponent<zombeatAI>().createZombeat(difficultyNumber);
             zombeats.Add(currentZombeat);
         }

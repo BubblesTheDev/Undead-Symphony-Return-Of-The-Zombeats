@@ -47,7 +47,13 @@ public class playerManager : MonoBehaviour
 
     void animateUI()
     {
-        if(zombeatTargeted != null) targetSigil.transform.position = zombeatTargeted.transform.position;
+        if (zombeatTargeted != null)
+        {
+            targetSigil.transform.position = zombeatTargeted.transform.position;
+            zombeatTargeted.transform.SetAsLastSibling();
+            targetSigil.transform.SetSiblingIndex(targetSigil.transform.parent.transform.childCount-2);
+            
+        }
         targetSigil.transform.Rotate(transform.forward, transform.localRotation.z + rotSpeed * Time.deltaTime);
 
         Vector3 scaleVector = Vector3.one * (1 + pulseSize/2 + (Mathf.Sin(pulseSpeed * Time.time)) * pulseSize/2);
