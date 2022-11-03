@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class zombeatManager : MonoBehaviour
@@ -14,7 +15,7 @@ public class zombeatManager : MonoBehaviour
     public float maxOffsetDistance = 1;
     public bool canSpawn;
     GameObject currentZombeat;
-
+    public TMP_Text pointsText;
     private void Update()
     {
         difficultyChanger();
@@ -25,6 +26,8 @@ public class zombeatManager : MonoBehaviour
         {
             StartCoroutine(spawnZombeat(spawnPoint.transform.position + new Vector3(Random.Range(-maxOffsetDistance, maxOffsetDistance), 0, 0)));
         }
+
+        pointsText.text = " POINTS: " + points.ToString();
     }
 
     void difficultyChanger()

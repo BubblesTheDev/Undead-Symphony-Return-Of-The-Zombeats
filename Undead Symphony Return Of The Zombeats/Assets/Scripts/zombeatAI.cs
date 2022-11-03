@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
-
+using TMPro;
 public class zombeatAI : MonoBehaviour
 {
     public float weaknessChangeChance;
@@ -26,6 +26,7 @@ public class zombeatAI : MonoBehaviour
     public GameObject player;
     public zombeatManager manager;
     public bool isDead;
+    
 
     private void Awake()
     {
@@ -44,7 +45,6 @@ public class zombeatAI : MonoBehaviour
         
         healthIndicator.fillAmount = (float)health / maxHealth;
         if (health <= 0 && currentHealthBars >= 1) {
-            Debug.Log("brug");
             currentHealthBars--;
             if (Random.Range(.01f, 1f) < weaknessChangeChance) healthIndicator.sprite = healthStates[currentHealthBars - 1];
             healthIndicator.sprite = healthStates[currentHealthBars];
@@ -115,18 +115,18 @@ public class zombeatAI : MonoBehaviour
     {
         health -= damageTaken;
         
-        zombeatAudio.clip = zombeatDmgSounds[Random.Range(0, zombeatDmgSounds.Length - 1)];
+        zombeatAudio.clip = zombeatDmgSounds[Random.Range(0, zombeatDmgSounds.Length)];
         zombeatAudio.Play();
     }
 
     void killZombeat()
     {
-        Debug.Log("Killing: " + gameObject.name);
         manager.points += (int)(pointWorth * maxHealthBars * (manager.difficultyNumber));
         manager.zombeats.Remove(gameObject);
         //play death sound and particles or anim
         zombeatAudio.clip = deathClips[Random.Range(0, deathClips.Length)];
         zombeatAudio.Play();
-        Destroy(gameObject, 3f);
+        manager.difficultyNumber++;
+        Destroy(gameObject);
     }
 }

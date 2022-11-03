@@ -3,7 +3,62 @@ guid: fd3d7d1b16e7ef243a16884a90bea96b
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: AlleyRoad
+    second: {fileID: 2100000, guid: 69aa8928f2e291f4589dcc11cf6d66bc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Curb
+    second: {fileID: 2100000, guid: e76f3f0f73f2edd4993f016c9dbd21b1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ledge
+    second: {fileID: 2100000, guid: e76f3f0f73f2edd4993f016c9dbd21b1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Light
+    second: {fileID: 2100000, guid: 550018aee8012ab4facca72e74d1da78, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Light.001
+    second: {fileID: 2100000, guid: 550018aee8012ab4facca72e74d1da78, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MainWall
+    second: {fileID: 2100000, guid: 62f1f0cfdf64f504f8074adb6df5a6c8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pillars
+    second: {fileID: 2100000, guid: 62f1f0cfdf64f504f8074adb6df5a6c8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pole
+    second: {fileID: 2100000, guid: 550018aee8012ab4facca72e74d1da78, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Sidewalk
+    second: {fileID: 2100000, guid: e76f3f0f73f2edd4993f016c9dbd21b1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Window
+    second: {fileID: 2100000, guid: a1210b8ed4352dc45bfdd1298cb834e2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WindowFrame
+    second: {fileID: 2100000, guid: dc6e9b5513804e24c9b9c0cde69c0cd4, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

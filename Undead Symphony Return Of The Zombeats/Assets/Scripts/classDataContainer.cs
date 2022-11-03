@@ -18,4 +18,7 @@ public class classDataContainer : ScriptableObject
     public Sprite classArcaneSigil;
     public int comboRequiredForPower;
     public classWeapon weapon;
+    public AudioClip classAttack;
+    public AudioClip classUlt;
+    public animationFrame[] animFrames;
 }

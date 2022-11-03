@@ -16,3 +16,14 @@ MonoBehaviour:
   classArcaneSigil: {fileID: 21300000, guid: e1decece097f0ac4b9e1772fecd2e8e5, type: 3}
   comboRequiredForPower: 7
   weapon: 1
+  classAttack: {fileID: 8300000, guid: bbad5665ceacc5b42a7217dc50173193, type: 3}
+  classUlt: {fileID: 8300000, guid: ed04c01e695fa2a4287714bb5aed24c4, type: 3}
+  animFrames:
+  - numberOfFramesTillNext: 30
+    animSprite: {fileID: 21300000, guid: 59c22aa15e7eaac48aead184f6565d72, type: 3}
+  - numberOfFramesTillNext: 28
+    animSprite: {fileID: 21300000, guid: 9cdc742be06ae384a832b4b574030557, type: 3}
+  - numberOfFramesTillNext: 22
+    animSprite: {fileID: 21300000, guid: 3d6fac9bae894524e9abb08afb3fbb40, type: 3}
+  - numberOfFramesTillNext: 25
+    animSprite: {fileID: 21300000, guid: 8fb615057bfcecb44bf754cba365507d, type: 3}

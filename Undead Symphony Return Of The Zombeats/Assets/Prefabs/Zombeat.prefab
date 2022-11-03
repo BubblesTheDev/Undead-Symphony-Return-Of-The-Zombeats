@@ -177,9 +177,11 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 37306c50d56484444b706ff5a435ee81, type: 3}
   zombeatDmgSounds:
   - {fileID: 8300000, guid: 29c4e16aef3430145822ac2060d528cc, type: 3}
-  - {fileID: 8300000, guid: 953900f94145f3243ad9606cff6f347b, type: 3}
-  - {fileID: 8300000, guid: 11180681ebab1ae44a6c5971e8536f90, type: 3}
   - {fileID: 8300000, guid: 96eacdaa023158e449b4a906b8e744bb, type: 3}
+  - {fileID: 8300000, guid: 11180681ebab1ae44a6c5971e8536f90, type: 3}
+  deathClips:
+  - {fileID: 8300000, guid: 5509f547aa4339e42ac162df37d73d2e, type: 3}
+  - {fileID: 8300000, guid: 953900f94145f3243ad9606cff6f347b, type: 3}
   zombieWeaknessElement: 0
   moveSpeed: 0.5
   health: 0

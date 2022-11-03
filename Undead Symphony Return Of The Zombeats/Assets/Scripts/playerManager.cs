@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public class playerManager : MonoBehaviour
 {
@@ -11,6 +11,11 @@ public class playerManager : MonoBehaviour
     public musicPlayer music;
     public GameObject targetSigil;
     public Image characterImage;
+    public int health;
+    public AudioSource playerAttack;
+    public AudioSource playerUlt;
+    public animHandler playerAnim;
+    public AudioSource wrongChord;
 
     [Header("Targeting")]
     float closestDistance = 999;
@@ -27,6 +32,11 @@ public class playerManager : MonoBehaviour
     {
         imageScale = new Vector3(targetSigil.transform.localScale.x, targetSigil.transform.localScale.y, targetSigil.transform.localScale.z);
         startingScale = targetSigil.transform.localScale.x;
+        playerAttack.clip = selectedClass.classAttack;
+        playerUlt.clip = selectedClass.classUlt;
+        playerAnim.frames = selectedClass.animFrames;
+        health = 3;
+        characterImage.sprite = selectedClass.animFrames[0].animSprite;
     }
 
     private void Update()
@@ -37,6 +47,8 @@ public class playerManager : MonoBehaviour
 
     void targetZombeat()
     {
+        if (zombeatTargeted == null) closestDistance = 999;
+
         foreach (GameObject zombeat in manager.zombeats)
         {
             if(Vector3.Distance(zombeat.transform.position, transform.position) < closestDistance)

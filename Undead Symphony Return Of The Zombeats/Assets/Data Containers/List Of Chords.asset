@@ -15,61 +15,97 @@ MonoBehaviour:
   possibleChords:
   - chordElement: 0
     notesForChord:
-    - buttonColour: 3
-    - buttonColour: 0
-    - buttonColour: 2
+    - Colour: 3
+      noteSprite: {fileID: 21300000, guid: a3b291ff45fc36240b60a1ed5af646e4, type: 3}
+    - Colour: 0
+      noteSprite: {fileID: 21300000, guid: 9869e5be7a797e8408818874d755baf7, type: 3}
+    - Colour: 2
+      noteSprite: {fileID: 21300000, guid: cf3c4408007d42b47bae2f2716291235, type: 3}
   - chordElement: 0
     notesForChord:
-    - buttonColour: 3
-    - buttonColour: 2
-    - buttonColour: 0
+    - Colour: 3
+      noteSprite: {fileID: 21300000, guid: a3b291ff45fc36240b60a1ed5af646e4, type: 3}
+    - Colour: 2
+      noteSprite: {fileID: 21300000, guid: cf3c4408007d42b47bae2f2716291235, type: 3}
+    - Colour: 0
+      noteSprite: {fileID: 21300000, guid: 9869e5be7a797e8408818874d755baf7, type: 3}
   - chordElement: 0
     notesForChord:
-    - buttonColour: 0
-    - buttonColour: 1
-    - buttonColour: 1
-  - chordElement: 1
-    notesForChord:
-    - buttonColour: 2
-    - buttonColour: 1
-    - buttonColour: 3
-  - chordElement: 1
-    notesForChord:
-    - buttonColour: 2
-    - buttonColour: 3
-    - buttonColour: 3
-  - chordElement: 1
-    notesForChord:
-    - buttonColour: 2
-    - buttonColour: 0
-    - buttonColour: 2
+    - Colour: 3
+      noteSprite: {fileID: 21300000, guid: a3b291ff45fc36240b60a1ed5af646e4, type: 3}
+    - Colour: 1
+      noteSprite: {fileID: 21300000, guid: bc49edd91cadb394c8482afe256d2899, type: 3}
+    - Colour: 1
+      noteSprite: {fileID: 21300000, guid: bc49edd91cadb394c8482afe256d2899, type: 3}
   - chordElement: 2
     notesForChord:
-    - buttonColour: 1
-    - buttonColour: 2
-    - buttonColour: 3
+    - Colour: 2
+      noteSprite: {fileID: 21300000, guid: cf3c4408007d42b47bae2f2716291235, type: 3}
+    - Colour: 1
+      noteSprite: {fileID: 21300000, guid: bc49edd91cadb394c8482afe256d2899, type: 3}
+    - Colour: 3
+      noteSprite: {fileID: 21300000, guid: a3b291ff45fc36240b60a1ed5af646e4, type: 3}
   - chordElement: 2
     notesForChord:
-    - buttonColour: 1
-    - buttonColour: 0
-    - buttonColour: 1
+    - Colour: 2
+      noteSprite: {fileID: 21300000, guid: cf3c4408007d42b47bae2f2716291235, type: 3}
+    - Colour: 3
+      noteSprite: {fileID: 21300000, guid: a3b291ff45fc36240b60a1ed5af646e4, type: 3}
+    - Colour: 3
+      noteSprite: {fileID: 21300000, guid: a3b291ff45fc36240b60a1ed5af646e4, type: 3}
   - chordElement: 2
     notesForChord:
-    - buttonColour: 1
-    - buttonColour: 2
-    - buttonColour: 2
+    - Colour: 2
+      noteSprite: {fileID: 21300000, guid: cf3c4408007d42b47bae2f2716291235, type: 3}
+    - Colour: 0
+      noteSprite: {fileID: 21300000, guid: 9869e5be7a797e8408818874d755baf7, type: 3}
+    - Colour: 2
+      noteSprite: {fileID: 21300000, guid: cf3c4408007d42b47bae2f2716291235, type: 3}
+  - chordElement: 1
+    notesForChord:
+    - Colour: 1
+      noteSprite: {fileID: 21300000, guid: bc49edd91cadb394c8482afe256d2899, type: 3}
+    - Colour: 2
+      noteSprite: {fileID: 21300000, guid: cf3c4408007d42b47bae2f2716291235, type: 3}
+    - Colour: 3
+      noteSprite: {fileID: 21300000, guid: a3b291ff45fc36240b60a1ed5af646e4, type: 3}
+  - chordElement: 1
+    notesForChord:
+    - Colour: 1
+      noteSprite: {fileID: 21300000, guid: bc49edd91cadb394c8482afe256d2899, type: 3}
+    - Colour: 0
+      noteSprite: {fileID: 21300000, guid: 9869e5be7a797e8408818874d755baf7, type: 3}
+    - Colour: 1
+      noteSprite: {fileID: 21300000, guid: bc49edd91cadb394c8482afe256d2899, type: 3}
+  - chordElement: 1
+    notesForChord:
+    - Colour: 1
+      noteSprite: {fileID: 21300000, guid: bc49edd91cadb394c8482afe256d2899, type: 3}
+    - Colour: 2
+      noteSprite: {fileID: 21300000, guid: cf3c4408007d42b47bae2f2716291235, type: 3}
+    - Colour: 2
+      noteSprite: {fileID: 21300000, guid: cf3c4408007d42b47bae2f2716291235, type: 3}
   - chordElement: 3
     notesForChord:
-    - buttonColour: 0
-    - buttonColour: 0
-    - buttonColour: 0
+    - Colour: 0
+      noteSprite: {fileID: 21300000, guid: 9869e5be7a797e8408818874d755baf7, type: 3}
+    - Colour: 0
+      noteSprite: {fileID: 21300000, guid: 9869e5be7a797e8408818874d755baf7, type: 3}
+    - Colour: 0
+      noteSprite: {fileID: 21300000, guid: 9869e5be7a797e8408818874d755baf7, type: 3}
   - chordElement: 3
     notesForChord:
-    - buttonColour: 0
-    - buttonColour: 2
-    - buttonColour: 1
+    - Colour: 0
+      noteSprite: {fileID: 21300000, guid: 9869e5be7a797e8408818874d755baf7, type: 3}
+    - Colour: 2
+      noteSprite: {fileID: 21300000, guid: cf3c4408007d42b47bae2f2716291235, type: 3}
+    - Colour: 1
+      noteSprite: {fileID: 21300000, guid: bc49edd91cadb394c8482afe256d2899, type: 3}
   - chordElement: 3
     notesForChord:
-    - buttonColour: 0
-    - buttonColour: 3
-    - buttonColour: 0
+    - Colour: 0
+      noteSprite: {fileID: 21300000, guid: 9869e5be7a797e8408818874d755baf7, type: 3}
+    - Colour: 3
+      noteSprite: {fileID: 21300000, guid: a3b291ff45fc36240b60a1ed5af646e4, type: 3}
+    - Colour: 0
+      noteSprite: {fileID: 21300000, guid: 9869e5be7a797e8408818874d755baf7, type: 3}
