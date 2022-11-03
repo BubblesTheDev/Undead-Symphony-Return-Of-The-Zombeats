@@ -18,4 +18,18 @@ MonoBehaviour:
   weapon: 2
   classAttack: {fileID: 8300000, guid: a76ae4afe9004e14d8a6c385e945feb6, type: 3}
   classUlt: {fileID: 8300000, guid: 55fbc586cd3c53044b3b64bf6df29445, type: 3}
-  animFrames: []
+  animFrames:
+  - numberOfFramesTillNext: 10
+    animSprite: {fileID: 21300000, guid: 4065825801cfefc439d070b8c9e9dfc0, type: 3}
+  - numberOfFramesTillNext: 10
+    animSprite: {fileID: 21300000, guid: 2b4104afc2ab7b941ba0509c6051d332, type: 3}
+  - numberOfFramesTillNext: 10
+    animSprite: {fileID: 21300000, guid: 71b5c15bae8b7d547afcd747dda68bef, type: 3}
+  - numberOfFramesTillNext: 10
+    animSprite: {fileID: 21300000, guid: 7dec627b3bcbd4e4dbb25b32f7d9f697, type: 3}
+  - numberOfFramesTillNext: 10
+    animSprite: {fileID: 21300000, guid: 5f8213021d5efd74ead14373e794e6d3, type: 3}
+  - numberOfFramesTillNext: 10
+    animSprite: {fileID: 21300000, guid: 72355600be19dd449ba7964ad5465ff7, type: 3}
+  - numberOfFramesTillNext: 10
+    animSprite: {fileID: 21300000, guid: 4065825801cfefc439d070b8c9e9dfc0, type: 3}
