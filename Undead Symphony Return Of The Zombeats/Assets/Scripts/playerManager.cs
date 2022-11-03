@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class playerManager : MonoBehaviour
 {
     [Header("Class Stats")]
-    public classDataContainer selectedClass;
     public zombeatManager manager;
     public musicPlayer music;
     public GameObject targetSigil;
@@ -16,6 +15,7 @@ public class playerManager : MonoBehaviour
     public AudioSource playerUlt;
     public animHandler playerAnim;
     public AudioSource wrongChord;
+    public GameObject classSelectHolder;
 
     [Header("Targeting")]
     float closestDistance = 999;
@@ -28,15 +28,26 @@ public class playerManager : MonoBehaviour
     public Vector3 imageScale;
     private float startingScale;
 
-    private void Awake()
-    {
+    public void OnEnable() {
+        classSelectHolder.GetComponent<classSelectHolder>();
+
         imageScale = new Vector3(targetSigil.transform.localScale.x, targetSigil.transform.localScale.y, targetSigil.transform.localScale.z);
         startingScale = targetSigil.transform.localScale.x;
-        playerAttack.clip = selectedClass.classAttack;
-        playerUlt.clip = selectedClass.classUlt;
-        playerAnim.frames = selectedClass.animFrames;
+        playerAttack.clip = classSelectHolder.GetComponent<classSelectHolder>().selectedClass.classAttack;
+        playerUlt.clip = classSelectHolder.GetComponent<classSelectHolder>().selectedClass.classUlt;
+        playerAnim.frames = classSelectHolder.GetComponent<classSelectHolder>().selectedClass.animFrames;
         health = 3;
-        characterImage.sprite = selectedClass.animFrames[0].animSprite;
+        characterImage.sprite = classSelectHolder.GetComponent<classSelectHolder>().selectedClass.animFrames[0].animSprite;
+    }
+
+    private void Awake() {
+        imageScale = new Vector3(targetSigil.transform.localScale.x, targetSigil.transform.localScale.y, targetSigil.transform.localScale.z);
+        startingScale = targetSigil.transform.localScale.x;
+        playerAttack.clip = classSelectHolder.GetComponent<classSelectHolder>().selectedClass.classAttack;
+        playerUlt.clip = classSelectHolder.GetComponent<classSelectHolder>().selectedClass.classUlt;
+        playerAnim.frames = classSelectHolder.GetComponent<classSelectHolder>().selectedClass.animFrames;
+        health = 3;
+        characterImage.sprite = classSelectHolder.GetComponent<classSelectHolder>().selectedClass.animFrames[0].animSprite;
     }
 
     private void Update()

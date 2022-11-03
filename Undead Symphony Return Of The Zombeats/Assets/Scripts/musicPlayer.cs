@@ -19,11 +19,16 @@ public class musicPlayer : MonoBehaviour
     public Image comboMeter;
     public Sprite[] powerMeterImages;
 
-    private void Awake()
-    {
+    private void OnEnable() {
         manager = GetComponent<playerManager>();
         spreader = GetComponent<ImageSpreader>();
     }
+
+    /*private void Awake()
+    {
+        manager = GetComponent<playerManager>();
+        spreader = GetComponent<ImageSpreader>();
+    }*/
 
     private void Update()
     {
@@ -120,12 +125,12 @@ public class musicPlayer : MonoBehaviour
 
     void handlePower()
     {
-        comboMeter.fillAmount = (float)currentChordCombo / manager.selectedClass.comboRequiredForPower;
+        comboMeter.fillAmount = (float)currentChordCombo / manager.classSelectHolder.GetComponent<classSelectHolder>().selectedClass.comboRequiredForPower;
         //Debug.Log((float)currentChordCombo / manager.selectedClass.comboRequiredForPower);
-        if (currentChordCombo < manager.selectedClass.comboRequiredForPower) comboMeter.sprite = powerMeterImages[0];
+        if (currentChordCombo < manager.classSelectHolder.GetComponent<classSelectHolder>().selectedClass.comboRequiredForPower) comboMeter.sprite = powerMeterImages[0];
         else comboMeter.sprite = powerMeterImages[1];
 
-        if(currentChordCombo >= manager.selectedClass.comboRequiredForPower && Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.F))
+        if(currentChordCombo >= manager.classSelectHolder.GetComponent<classSelectHolder>().selectedClass.comboRequiredForPower && Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.F))
         {
             Debug.Log("Actiave Power");
             currentChordCombo = 0;
