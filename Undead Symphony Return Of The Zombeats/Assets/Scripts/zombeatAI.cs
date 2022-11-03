@@ -85,7 +85,7 @@ public class zombeatAI : MonoBehaviour
     }
 
     void generateWeakness() {
-        int randomElementIndex = Random.Range(0,4);
+        int randomElementIndex = Random.Range(0,3);
         switch (randomElementIndex) {
             case 0:
             zombieWeaknessElement = elements.Metal;
@@ -98,11 +98,6 @@ public class zombeatAI : MonoBehaviour
             break;
 
             case 2:
-            zombieWeaknessElement = elements.Light;
-            healthIndicator.color = Color.yellow;
-            break;
-
-            case 3:
             zombieWeaknessElement = elements.Fire;
             healthIndicator.color = Color.red;
             break;

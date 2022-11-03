@@ -77,16 +77,12 @@ public class musicPlayer : MonoBehaviour
                         case elements.Metal:
                             spreader.addAnotherNote(0);
                             break;
-                        case elements.Light:
+                        case elements.Electricity:
                             spreader.addAnotherNote(1);
 
                             break;
-                        case elements.Electricity:
-                            spreader.addAnotherNote(2);
-
-                            break;
                         case elements.Fire:
-                            spreader.addAnotherNote(3);
+                            spreader.addAnotherNote(2);
 
                             break;
                     }
@@ -110,11 +106,6 @@ public class musicPlayer : MonoBehaviour
             recentNotes.Add(new note(buttonColour.green));
             if (noteImages[recentNotes.Count-1].sprite == transparent) noteImages[recentNotes.Count-1].sprite = noteSprites[0];
         }
-        if (Input.GetKeyUp(KeyCode.S))
-        {
-            recentNotes.Add(new note(buttonColour.yellow));
-            if (noteImages[recentNotes.Count-1].sprite == transparent) noteImages[recentNotes.Count-1].sprite = noteSprites[1];
-        }
         if (Input.GetKeyUp(KeyCode.D))
         {
             recentNotes.Add(new note(buttonColour.blue));
@@ -134,7 +125,7 @@ public class musicPlayer : MonoBehaviour
         if (currentChordCombo < manager.selectedClass.comboRequiredForPower) comboMeter.sprite = powerMeterImages[0];
         else comboMeter.sprite = powerMeterImages[1];
 
-        if(currentChordCombo >= manager.selectedClass.comboRequiredForPower && Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.F))
+        if(currentChordCombo >= manager.selectedClass.comboRequiredForPower && Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.F))
         {
             Debug.Log("Actiave Power");
             currentChordCombo = 0;
@@ -147,7 +138,6 @@ public enum elements
 {
     Metal,
     Electricity,
-    Light,
     Fire
 }
 
@@ -155,7 +145,6 @@ public enum buttonColour
 {
     red,
     blue,
-    yellow,
     green
 }
 
