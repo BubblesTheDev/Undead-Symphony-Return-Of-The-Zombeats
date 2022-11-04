@@ -27,6 +27,10 @@ public class playerManager : MonoBehaviour
     public float rotSpeed;
     public Vector3 imageScale;
     private float startingScale;
+    public GameObject lightChordControls;
+    public GameObject medChordControls;
+    public GameObject HeavyChordControls;
+    public Image healthBar;
 
     public void OnEnable() {
         classSelectHolder.GetComponent<classSelectHolder>();
@@ -36,24 +40,37 @@ public class playerManager : MonoBehaviour
         playerAttack.clip = classSelectHolder.GetComponent<classSelectHolder>().selectedClass.classAttack;
         playerUlt.clip = classSelectHolder.GetComponent<classSelectHolder>().selectedClass.classUlt;
         playerAnim.frames = classSelectHolder.GetComponent<classSelectHolder>().selectedClass.animFrames;
-        health = 3;
         characterImage.sprite = classSelectHolder.GetComponent<classSelectHolder>().selectedClass.animFrames[0].animSprite;
+        targetSigil.GetComponent<Image>().sprite = classSelectHolder.GetComponent<classSelectHolder>().selectedClass.classArcaneSigil;
+        health = classSelectHolder.GetComponent<classSelectHolder>().selectedClass.classHealth;
+        healthBar.fillAmount = (float)health / classSelectHolder.GetComponent<classSelectHolder>().selectedClass.classHealth;
     }
 
     private void Awake() {
+        classSelectHolder.GetComponent<classSelectHolder>();
+
         imageScale = new Vector3(targetSigil.transform.localScale.x, targetSigil.transform.localScale.y, targetSigil.transform.localScale.z);
         startingScale = targetSigil.transform.localScale.x;
         playerAttack.clip = classSelectHolder.GetComponent<classSelectHolder>().selectedClass.classAttack;
         playerUlt.clip = classSelectHolder.GetComponent<classSelectHolder>().selectedClass.classUlt;
         playerAnim.frames = classSelectHolder.GetComponent<classSelectHolder>().selectedClass.animFrames;
-        health = 3;
         characterImage.sprite = classSelectHolder.GetComponent<classSelectHolder>().selectedClass.animFrames[0].animSprite;
+        targetSigil.GetComponent<Image>().sprite = classSelectHolder.GetComponent<classSelectHolder>().selectedClass.classArcaneSigil;
+        health = classSelectHolder.GetComponent<classSelectHolder>().selectedClass.classHealth;
+        healthBar.fillAmount = (float)health / classSelectHolder.GetComponent<classSelectHolder>().selectedClass.classHealth;
     }
 
     private void Update()
     {
         animateUI();
         targetZombeat();
+
+        /*if (zombeatTargeted.GetComponent<zombeatAI>().tier == chordWeight.light) lightChordControls.SetActive(true);
+        else lightChordControls.SetActive(false);
+        if (zombeatTargeted.GetComponent<zombeatAI>().tier == chordWeight.medium) medChordControls.SetActive(true);
+        else medChordControls.SetActive(false);
+        if (zombeatTargeted.GetComponent<zombeatAI>().tier == chordWeight.heavy) HeavyChordControls.SetActive(true);
+        else HeavyChordControls.SetActive(false);*/
     }
 
     void targetZombeat()

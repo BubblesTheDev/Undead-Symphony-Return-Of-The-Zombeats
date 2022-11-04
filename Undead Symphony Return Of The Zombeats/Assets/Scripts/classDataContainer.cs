@@ -16,6 +16,7 @@ public class classDataContainer : ScriptableObject
 {
     public string className;
     public Sprite classArcaneSigil;
+    public int classHealth;
     public int comboRequiredForPower;
     public classWeapon weapon;
     public AudioClip classAttack;

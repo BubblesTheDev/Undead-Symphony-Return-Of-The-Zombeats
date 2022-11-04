@@ -23,6 +23,11 @@ public class animHandler : MonoBehaviour
 
         if (loopAnim) StartCoroutine(playAnim());
     }
+
+    public void stopAnim()
+    {
+        StopCoroutine(playAnim());
+    }
 }
 
 [System.Serializable]

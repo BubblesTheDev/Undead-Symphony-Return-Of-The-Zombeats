@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   className: Bard-Barian
   classArcaneSigil: {fileID: 21300000, guid: e1decece097f0ac4b9e1772fecd2e8e5, type: 3}
-  comboRequiredForPower: 7
+  classHealth: 7
+  comboRequiredForPower: 10
   weapon: 1
   classAttack: {fileID: 8300000, guid: bbad5665ceacc5b42a7217dc50173193, type: 3}
   classUlt: {fileID: 8300000, guid: ed04c01e695fa2a4287714bb5aed24c4, type: 3}

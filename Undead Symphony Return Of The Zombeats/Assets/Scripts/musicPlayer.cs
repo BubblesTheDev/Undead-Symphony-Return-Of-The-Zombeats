@@ -8,14 +8,20 @@ public class musicPlayer : MonoBehaviour
 
     public List<note> recentNotes = new List<note>();
     public List<chord> damageChords = new List<chord>();
+
     public int currentDamageStoredOnZombeat;
     public int currentChordCombo;
-    public chordAssetList chordList;
+
+    public chordAssetList chordListLight;
+    public chordAssetList chordListMed;
+    public chordAssetList chordListHeavy;
     playerManager manager;
+
     public Image[] noteImages;
     public Sprite[] noteSprites;
     public Sprite transparent;
     public ImageSpreader spreader;
+
     public Image comboMeter;
     public Sprite[] powerMeterImages;
 
@@ -24,11 +30,11 @@ public class musicPlayer : MonoBehaviour
         spreader = GetComponent<ImageSpreader>();
     }
 
-    /*private void Awake()
+    private void Awake()
     {
         manager = GetComponent<playerManager>();
         spreader = GetComponent<ImageSpreader>();
-    }*/
+    }
 
     private void Update()
     {
@@ -36,7 +42,7 @@ public class musicPlayer : MonoBehaviour
         compareChord();
 
         //Find Player class manager and get class and targeted zombeat
-        if (Input.GetKeyUp(KeyCode.G))
+        if (Input.GetKeyUp(KeyCode.F))
         {
             damageZombeat(manager.zombeatTargeted);
             damageChords.Clear();
@@ -50,18 +56,15 @@ public class musicPlayer : MonoBehaviour
     {
         foreach (chord damageChord in damageChords)
         {
-            if (zombeat.GetComponent<zombeatAI>().zombieWeaknessElement == damageChord.chordElement) currentDamageStoredOnZombeat++;
+            if (zombeat.GetComponent<zombeatAI>().zombieWeaknessElement == damageChord.chordElement && zombeat.GetComponent<zombeatAI>().tier == damageChord.weight) currentDamageStoredOnZombeat++;
         }
-        if (currentDamageStoredOnZombeat <= 0)
-        {
-            manager.wrongChord.Play();
-            return;
-        }
-        
+        if (currentDamageStoredOnZombeat <= 0) return;
+
+
         StartCoroutine(manager.playerAnim.playAnim());
         manager.playerAttack.Play();
         zombeat.GetComponent<zombeatAI>().takeDamage(currentDamageStoredOnZombeat);
-        Debug.Log("Attacked Zombeat " + zombeat.name + " with " + currentDamageStoredOnZombeat + " damage");
+        //Debug.Log("Attacked Zombeat " + zombeat.name + " with " + currentDamageStoredOnZombeat + " damage");
     }
 
     void compareChord()
@@ -69,30 +72,82 @@ public class musicPlayer : MonoBehaviour
         if (recentNotes.Count >= 3)
         {
             //Debug.Log("Compare Chords");
-            foreach (chord possibleChord in chordList.possibleChords)
+            foreach (chord possibleChord in chordListLight.possibleChords)
             {
                 if (possibleChord.notesForChord[0].Colour == recentNotes[0].Colour
                     && possibleChord.notesForChord[1].Colour == recentNotes[1].Colour
                     && possibleChord.notesForChord[2].Colour == recentNotes[2].Colour)
                 {
                     //Store Newly made chord from player
-                    damageChords.Add(new chord(recentNotes[0], recentNotes[1], recentNotes[2], possibleChord.chordElement));
+                    damageChords.Add(new chord(recentNotes[0], recentNotes[1], recentNotes[2], possibleChord.chordElement, chordWeight.light));
                     switch (possibleChord.chordElement)
                     {
                         case elements.Metal:
                             spreader.addAnotherNote(0);
                             break;
-                        case elements.Electricity:
+                        case elements.Fire:
                             spreader.addAnotherNote(1);
 
                             break;
-                        case elements.Fire:
+                        case elements.Electricity:
                             spreader.addAnotherNote(2);
 
                             break;
                     }
                     currentChordCombo++;
+                } else manager.wrongChord.Play();
+            }
+            foreach (chord possibleChord in chordListMed.possibleChords)
+            {
+                if (possibleChord.notesForChord[0].Colour == recentNotes[0].Colour
+                    && possibleChord.notesForChord[1].Colour == recentNotes[1].Colour
+                    && possibleChord.notesForChord[2].Colour == recentNotes[2].Colour)
+                {
+                    //Store Newly made chord from player
+                    damageChords.Add(new chord(recentNotes[0], recentNotes[1], recentNotes[2], possibleChord.chordElement, chordWeight.medium));
+                    switch (possibleChord.chordElement)
+                    {
+                        case elements.Metal:
+                            spreader.addAnotherNote(0+3);
+                            break;
+                        case elements.Fire:
+                            spreader.addAnotherNote(1 + 3);
+
+                            break;
+                        case elements.Electricity:
+                            spreader.addAnotherNote(2 + 3);
+
+                            break;
+                    }
+                    currentChordCombo++;
                 }
+                else manager.wrongChord.Play();
+            }
+            foreach (chord possibleChord in chordListHeavy.possibleChords)
+            {
+                if (possibleChord.notesForChord[0].Colour == recentNotes[0].Colour
+                    && possibleChord.notesForChord[1].Colour == recentNotes[1].Colour
+                    && possibleChord.notesForChord[2].Colour == recentNotes[2].Colour)
+                {
+                    //Store Newly made chord from player
+                    damageChords.Add(new chord(recentNotes[0], recentNotes[1], recentNotes[2], possibleChord.chordElement, chordWeight.heavy));
+                    switch (possibleChord.chordElement)
+                    {
+                        case elements.Metal:
+                            spreader.addAnotherNote(0+6);
+                            break;
+                        case elements.Fire:
+                            spreader.addAnotherNote(1 + 6);
+
+                            break;
+                        case elements.Electricity:
+                            spreader.addAnotherNote(2 + 6);
+
+                            break;
+                    }
+                    currentChordCombo++;
+                }
+                else manager.wrongChord.Play();
             }
             recentNotes.Clear();
             for (int i = 0; i < noteImages.Length; i++)
@@ -111,14 +166,14 @@ public class musicPlayer : MonoBehaviour
             recentNotes.Add(new note(buttonColour.green));
             if (noteImages[recentNotes.Count-1].sprite == transparent) noteImages[recentNotes.Count-1].sprite = noteSprites[0];
         }
+        if (Input.GetKeyUp(KeyCode.S))
+        {
+            recentNotes.Add(new note(buttonColour.red));
+            if (noteImages[recentNotes.Count-1].sprite == transparent) noteImages[recentNotes.Count-1].sprite = noteSprites[2];
+        }
         if (Input.GetKeyUp(KeyCode.D))
         {
             recentNotes.Add(new note(buttonColour.blue));
-            if (noteImages[recentNotes.Count-1].sprite == transparent) noteImages[recentNotes.Count-1].sprite = noteSprites[2];
-        }
-        if (Input.GetKeyUp(KeyCode.F))
-        {
-            recentNotes.Add(new note(buttonColour.red));
             if (noteImages[recentNotes.Count-1].sprite == transparent) noteImages[recentNotes.Count-1].sprite = noteSprites[3];
         }
     }
@@ -153,6 +208,13 @@ public enum buttonColour
     green
 }
 
+public enum chordWeight
+{
+    light,
+    medium,
+    heavy
+}
+
 [System.Serializable]
 public class note
 {
@@ -169,11 +231,13 @@ public class note
 public class chord
 {
     public elements chordElement;
+    public chordWeight weight;
     public note[] notesForChord;
 
-    public chord(note note1, note note2, note note3, elements damageElement)
+    public chord(note note1, note note2, note note3, elements damageElement, chordWeight givenWeight)
     {
         chordElement = damageElement;
+        weight = givenWeight;
         notesForChord = new note[3] { note1, note2, note3 };
     }
 

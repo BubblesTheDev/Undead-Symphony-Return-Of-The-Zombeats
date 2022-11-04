@@ -1,0 +1,87 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 370419db37e60c745afcd40079ec3db6, type: 3}
+  m_Name: List Of Light Chords
+  m_EditorClassIdentifier: 
+  possibleChords:
+  - chordElement: 0
+    notesForChord:
+    - Colour: 2
+      noteSprite: {fileID: 21300000, guid: a3b291ff45fc36240b60a1ed5af646e4, type: 3}
+    - Colour: 0
+      noteSprite: {fileID: 21300000, guid: 9869e5be7a797e8408818874d755baf7, type: 3}
+    - Colour: 1
+      noteSprite: {fileID: 21300000, guid: bc49edd91cadb394c8482afe256d2899, type: 3}
+  - chordElement: 0
+    notesForChord:
+    - Colour: 2
+      noteSprite: {fileID: 21300000, guid: a3b291ff45fc36240b60a1ed5af646e4, type: 3}
+    - Colour: 1
+      noteSprite: {fileID: 21300000, guid: bc49edd91cadb394c8482afe256d2899, type: 3}
+    - Colour: 0
+      noteSprite: {fileID: 21300000, guid: 9869e5be7a797e8408818874d755baf7, type: 3}
+  - chordElement: 0
+    notesForChord:
+    - Colour: 2
+      noteSprite: {fileID: 21300000, guid: a3b291ff45fc36240b60a1ed5af646e4, type: 3}
+    - Colour: 1
+      noteSprite: {fileID: 21300000, guid: bc49edd91cadb394c8482afe256d2899, type: 3}
+    - Colour: 1
+      noteSprite: {fileID: 21300000, guid: bc49edd91cadb394c8482afe256d2899, type: 3}
+  - chordElement: 1
+    notesForChord:
+    - Colour: 1
+      noteSprite: {fileID: 21300000, guid: bc49edd91cadb394c8482afe256d2899, type: 3}
+    - Colour: 1
+      noteSprite: {fileID: 21300000, guid: bc49edd91cadb394c8482afe256d2899, type: 3}
+    - Colour: 2
+      noteSprite: {fileID: 21300000, guid: a3b291ff45fc36240b60a1ed5af646e4, type: 3}
+  - chordElement: 1
+    notesForChord:
+    - Colour: 1
+      noteSprite: {fileID: 21300000, guid: bc49edd91cadb394c8482afe256d2899, type: 3}
+    - Colour: 0
+      noteSprite: {fileID: 21300000, guid: 9869e5be7a797e8408818874d755baf7, type: 3}
+    - Colour: 1
+      noteSprite: {fileID: 21300000, guid: bc49edd91cadb394c8482afe256d2899, type: 3}
+  - chordElement: 1
+    notesForChord:
+    - Colour: 1
+      noteSprite: {fileID: 21300000, guid: bc49edd91cadb394c8482afe256d2899, type: 3}
+    - Colour: 0
+      noteSprite: {fileID: 21300000, guid: 9869e5be7a797e8408818874d755baf7, type: 3}
+    - Colour: 2
+      noteSprite: {fileID: 21300000, guid: a3b291ff45fc36240b60a1ed5af646e4, type: 3}
+  - chordElement: 2
+    notesForChord:
+    - Colour: 0
+      noteSprite: {fileID: 21300000, guid: 9869e5be7a797e8408818874d755baf7, type: 3}
+    - Colour: 0
+      noteSprite: {fileID: 21300000, guid: 9869e5be7a797e8408818874d755baf7, type: 3}
+    - Colour: 0
+      noteSprite: {fileID: 21300000, guid: 9869e5be7a797e8408818874d755baf7, type: 3}
+  - chordElement: 2
+    notesForChord:
+    - Colour: 0
+      noteSprite: {fileID: 21300000, guid: 9869e5be7a797e8408818874d755baf7, type: 3}
+    - Colour: 2
+      noteSprite: {fileID: 21300000, guid: a3b291ff45fc36240b60a1ed5af646e4, type: 3}
+    - Colour: 1
+      noteSprite: {fileID: 21300000, guid: bc49edd91cadb394c8482afe256d2899, type: 3}
+  - chordElement: 2
+    notesForChord:
+    - Colour: 0
+      noteSprite: {fileID: 21300000, guid: 9869e5be7a797e8408818874d755baf7, type: 3}
+    - Colour: 2
+      noteSprite: {fileID: 21300000, guid: a3b291ff45fc36240b60a1ed5af646e4, type: 3}
+    - Colour: 0
+      noteSprite: {fileID: 21300000, guid: 9869e5be7a797e8408818874d755baf7, type: 3}

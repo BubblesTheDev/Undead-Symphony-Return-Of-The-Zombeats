@@ -16,6 +16,7 @@ public class zombeatManager : MonoBehaviour
     public bool canSpawn;
     GameObject currentZombeat;
     public TMP_Text pointsText;
+    
     private void Update()
     {
         difficultyChanger();

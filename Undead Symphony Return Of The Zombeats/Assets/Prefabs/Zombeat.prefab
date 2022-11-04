@@ -35,7 +35,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 1.65}
+  m_AnchoredPosition: {x: 0, y: 1.81}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1110331769409699278
@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b7f78607101b64c44b7666c68bd1c8b7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 417593ee67fc63a408cd6144bee92c8f, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -89,6 +89,7 @@ GameObject:
   - component: {fileID: 1110331771170110766}
   - component: {fileID: 1110331771170110765}
   - component: {fileID: -1204229834954494460}
+  - component: {fileID: 1934577741789618392}
   m_Layer: 5
   m_Name: Zombeat
   m_TagString: Untagged
@@ -109,6 +110,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1110331769409699276}
+  - {fileID: 1958997591129172758}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -167,14 +169,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42e1827afc27b404ba733286bc750407, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pointWorth: 100
+  moveSpeed: 0.5
+  health: 0
+  zombieWeaknessElement: 0
+  tier: 0
   weaknessChangeChance: 65
   barChances: {x: 100, y: 25, z: 3}
-  pointWorth: 100
-  healthIndicator: {fileID: 1110331769409699277}
-  healthStates:
-  - {fileID: 21300000, guid: b7f78607101b64c44b7666c68bd1c8b7, type: 3}
-  - {fileID: 21300000, guid: b9be05f3c1379f041a9652cd3b917b8c, type: 3}
-  - {fileID: 21300000, guid: 37306c50d56484444b706ff5a435ee81, type: 3}
+  tierIndicator: {fileID: 1110331769409699277}
+  tierSprite:
+  - {fileID: 21300000, guid: 417593ee67fc63a408cd6144bee92c8f, type: 3}
+  - {fileID: 21300000, guid: d3e6f0d8178985d4abf1ca54df61f5d0, type: 3}
+  - {fileID: 21300000, guid: 51bd68f0e00f0bd419b446973d16537f, type: 3}
+  - {fileID: 21300000, guid: 92a6c86dfd8ab054ebb01a3557f14ccb, type: 3}
+  - {fileID: 21300000, guid: 39d6ab5b5cf69684abd5fc3aaf589a6e, type: 3}
+  - {fileID: 21300000, guid: 003a899aea009824e8cbc07144dac4e1, type: 3}
+  - {fileID: 21300000, guid: 83a0919b355ffb4479d41b45392e66c6, type: 3}
+  - {fileID: 21300000, guid: 1da9c8246f23ac24fb2d4cef3a45393e, type: 3}
+  - {fileID: 21300000, guid: a4d2297018f3a8e4a822ef376fd16457, type: 3}
   zombeatDmgSounds:
   - {fileID: 8300000, guid: 29c4e16aef3430145822ac2060d528cc, type: 3}
   - {fileID: 8300000, guid: 96eacdaa023158e449b4a906b8e744bb, type: 3}
@@ -182,12 +194,10 @@ MonoBehaviour:
   deathClips:
   - {fileID: 8300000, guid: 5509f547aa4339e42ac162df37d73d2e, type: 3}
   - {fileID: 8300000, guid: 953900f94145f3243ad9606cff6f347b, type: 3}
-  zombieWeaknessElement: 0
-  moveSpeed: 0.5
-  health: 0
-  maxHealth: 0
-  currentHealthBars: 0
-  maxHealthBars: 0
+  walkAnimation: {fileID: 1934577741789618392}
+  hitAnimation: {fileID: 3399454109218484232}
+  tierNumber: 0
+  maxTierNumber: 0
   stoppingDistance: 4.5
   player: {fileID: 0}
   manager: {fileID: 0}
@@ -288,3 +298,88 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1934577741789618392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1110331771170110763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9d285281f1eaca47a7433e5b30a3e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animImage: {fileID: 1110331771170110766}
+  frames:
+  - numberOfFramesTillNext: 55
+    animSprite: {fileID: 21300000, guid: 44ef266c774f27746879d030160fee9c, type: 3}
+  - numberOfFramesTillNext: 70
+    animSprite: {fileID: 21300000, guid: e3f0c0d7902114146b473601e3970627, type: 3}
+  - numberOfFramesTillNext: 55
+    animSprite: {fileID: 21300000, guid: 41cb0b6a328831c41a294e2d29195630, type: 3}
+  - numberOfFramesTillNext: 70
+    animSprite: {fileID: 21300000, guid: 230475885145b754ba66986f56c9d2f1, type: 3}
+  loopAnim: 1
+--- !u!1 &1812717680047994497
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1958997591129172758}
+  - component: {fileID: 3399454109218484232}
+  m_Layer: 5
+  m_Name: AttackAnimHandler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1958997591129172758
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1812717680047994497}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1110331771170110764}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &3399454109218484232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1812717680047994497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9d285281f1eaca47a7433e5b30a3e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animImage: {fileID: 1110331771170110766}
+  frames:
+  - numberOfFramesTillNext: 50
+    animSprite: {fileID: 21300000, guid: dfd89108213c21449bf35debfe952aed, type: 3}
+  - numberOfFramesTillNext: 65
+    animSprite: {fileID: 21300000, guid: e92bfd70b0c8b8a4f9beaa856ed3dc9c, type: 3}
+  - numberOfFramesTillNext: 90
+    animSprite: {fileID: 21300000, guid: 732a16becd4274048bf05edf917a2118, type: 3}
+  - numberOfFramesTillNext: 15
+    animSprite: {fileID: 21300000, guid: e92bfd70b0c8b8a4f9beaa856ed3dc9c, type: 3}
+  - numberOfFramesTillNext: 15
+    animSprite: {fileID: 21300000, guid: 24a2ff711b1a87f4eaac9d5a1cdc5516, type: 3}
+  loopAnim: 1

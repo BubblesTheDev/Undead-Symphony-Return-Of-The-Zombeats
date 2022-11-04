@@ -6,27 +6,33 @@ using UnityEngine.Audio;
 using TMPro;
 public class zombeatAI : MonoBehaviour
 {
+
+    //Zombeat Stats
+    public float pointWorth = 100;
+    public float moveSpeed;
+    public int health;
+    public elements zombieWeaknessElement;
+    public chordWeight tier;
+
     public float weaknessChangeChance;
     public Vector3 barChances;
-    public float pointWorth = 100;
-    public Image healthIndicator;
-    public Sprite[] healthStates;
+    public Image tierIndicator;
+    public Sprite[] tierSprite;
     public AudioClip[] zombeatDmgSounds;
     public AudioClip[] deathClips;
     private AudioSource zombeatAudio;
-    public elements zombieWeaknessElement;
-    public float moveSpeed;
-    public int health;
-    public int maxHealth;
     
-    public int currentHealthBars;
-    public int maxHealthBars;
+
+    public animHandler walkAnimation;
+    public animHandler hitAnimation;
+
+    public int tierNumber;
+    public int maxTierNumber;
 
     public float stoppingDistance;
     public GameObject player;
     public zombeatManager manager;
     public bool isDead;
-    
 
     private void Awake()
     {
@@ -36,24 +42,37 @@ public class zombeatAI : MonoBehaviour
         stoppingDistance += Random.Range(-.5f, .5f);
         zombeatAudio = GetComponent<AudioSource>();
 
+        StartCoroutine(walkAnimation.playAnim());
     }
+
     private void Update()
     {
         if (isDead) return;
-        
-        if (Vector3.Distance(transform.position, player.transform.position) >= stoppingDistance) transform.Translate(-transform.forward * moveSpeed * Time.deltaTime);
-        
-        healthIndicator.fillAmount = (float)health / maxHealth;
-        if (health <= 0 && currentHealthBars >= 1) {
-            currentHealthBars--;
-            if (Random.Range(.01f, 1f) < weaknessChangeChance) healthIndicator.sprite = healthStates[currentHealthBars - 1];
-            healthIndicator.sprite = healthStates[currentHealthBars];
-            health = maxHealth;
+
+        if (Vector3.Distance(transform.position, player.transform.position) >= stoppingDistance)
+        {
+            transform.Translate(-transform.forward * moveSpeed * Time.deltaTime);
+        } 
+        else
+        {
+            walkAnimation.loopAnim = false;
+            walkAnimation.stopAnim();
+            StartCoroutine(hitPlayer());
         }
-        if (health <= 0 && currentHealthBars <= 0) killZombeat();
+
+        tierIndicator.fillAmount = (float)health / tierNumber;
+
+        if (health <= 0 && tierNumber >= 1)
+        {
+            tierNumber--;
+            if (Random.Range(.01f, 1f) < weaknessChangeChance) tierIndicator.sprite = tierSprite[tierNumber - 1];
+            tierIndicator.sprite = tierSprite[tierNumber];
+            health = tierNumber;
+        }
+        if (health <= 0 && tierNumber <= 0) killZombeat();
 
 
-        healthIndicator.sprite = healthStates[Mathf.Clamp( currentHealthBars-1, 0, 3)];
+        tierIndicator.sprite = tierSprite[Mathf.Clamp(tierNumber - 1, 0, 3)];
 
     }
 
@@ -69,54 +88,76 @@ public class zombeatAI : MonoBehaviour
 
         healthBarChance -= difficultyChanceChange;
 
-        if (healthBarChance < barChances.z / 100) maxHealthBars = 3;
-        else if (healthBarChance < barChances.y / 100) maxHealthBars = 2;
-        else if (healthBarChance < barChances.x / 100) maxHealthBars = 1;
-        else maxHealthBars = 1;
-        currentHealthBars = maxHealthBars;
+        if (healthBarChance < barChances.z / 100) maxTierNumber = 3;
+        else if (healthBarChance < barChances.y / 100) maxTierNumber = 2;
+        else if (healthBarChance < barChances.x / 100) maxTierNumber = 1;
+        else maxTierNumber = 1;
+        tierNumber = maxTierNumber;
 
-        maxHealth = 3 + Mathf.RoundToInt(1 * (difficulty / 10));
-        health = maxHealth;
+        health = tierNumber;
 
         //Debug.Log("Zombeat: " + gameObject.name + "'s chances for healthbarNumbers is " + healthBarChance + "%");
-        //Debug.Log("Which Means Zombeat: " + gameObject.name + " spawns with " + maxHealthBars + " Healthbars");
+        //Debug.Log("Which Means Zombeat: " + gameObject.name + " spawns with " + maxTierNumber + " Healthbars");
 
-        
+
     }
 
-    void generateWeakness() {
-        int randomElementIndex = Random.Range(0,3);
-        switch (randomElementIndex) {
+    void generateWeakness()
+    {
+        int randomElementIndex = Random.Range(0, 3);
+        switch (randomElementIndex)
+        {
             case 0:
-            zombieWeaknessElement = elements.Metal;
-            healthIndicator.color = Color.grey;
-            break;
+                zombieWeaknessElement = elements.Metal;
+                break;
 
             case 1:
-            zombieWeaknessElement = elements.Electricity;
-            healthIndicator.color = Color.blue;
-            break;
+                zombieWeaknessElement = elements.Electricity;
+                break;
 
             case 2:
-            zombieWeaknessElement = elements.Fire;
-            healthIndicator.color = Color.red;
-            break;
+                zombieWeaknessElement = elements.Fire;
+                break;
         }
 
-        healthIndicator.sprite = healthStates[currentHealthBars];
+        tierIndicator.sprite = tierSprite[tierNumber];
+    }
+
+    public IEnumerator hitPlayer()
+    {
+        StartCoroutine(hitAnimation.playAnim());
+
+        int cumulativeFramesForAnim = 0;
+        for (int i = 0; i < hitAnimation.frames.Length; i++) cumulativeFramesForAnim += hitAnimation.frames[i].numberOfFramesTillNext;
+
+        for (int x = 0; x < cumulativeFramesForAnim; x++)
+        {
+            yield return new WaitForEndOfFrame();
+        }
+
+        GameObject.Find("Game Manager").GetComponent<playerManager>().health--;
+        for (int y = 0; y < manager.zombeats.Count; y++)
+        {
+            manager.difficultyNumber -= manager.zombeats.Count;
+            manager.zombeats[y].GetComponent<zombeatAI>().killZombeat();
+        }
+        GameObject.Find("Game Manager").GetComponent<playerManager>().music.currentChordCombo -= 5;
+        GameObject.Find("Game Manager").GetComponent<playerManager>().healthBar.fillAmount 
+            = (float)GameObject.Find("Game Manager").GetComponent<playerManager>().health / GameObject.Find("Game Manager").GetComponent<playerManager>().classSelectHolder.GetComponent<classSelectHolder>().selectedClass.classHealth;
+
     }
 
     public void takeDamage(int damageTaken)
     {
         health -= damageTaken;
-        
+
         zombeatAudio.clip = zombeatDmgSounds[Random.Range(0, zombeatDmgSounds.Length)];
         zombeatAudio.Play();
     }
 
     void killZombeat()
     {
-        manager.points += (int)(pointWorth * maxHealthBars * (manager.difficultyNumber));
+        manager.points += (int)(pointWorth * maxTierNumber * (manager.difficultyNumber));
         manager.zombeats.Remove(gameObject);
         //play death sound and particles or anim
         zombeatAudio.clip = deathClips[Random.Range(0, deathClips.Length)];
