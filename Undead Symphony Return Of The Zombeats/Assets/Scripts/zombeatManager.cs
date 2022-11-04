@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class zombeatManager : MonoBehaviour
 {
-    public float difficultyNumber = 1;
+    public int difficultyNumber = 1;
     public float timeBetweenSpawns = 3;
     public int maxNumZombies = 3;
     public List<GameObject> zombeats;
@@ -14,18 +14,20 @@ public class zombeatManager : MonoBehaviour
     public GameObject zombeatPrefab;
     public float maxOffsetDistance = 1;
     public bool canSpawn;
+    [SerializeField]
     GameObject currentZombeat;
     public TMP_Text pointsText;
+    public GameObject worldSpaceImages;
     
     private void Update()
     {
         difficultyChanger();
 
-        regenerateTempZombeat();
+        //regenerateTempZombeat();
 
         if (zombeats.Count < maxNumZombies && canSpawn)
         {
-            StartCoroutine(spawnZombeat(spawnPoint.transform.position + new Vector3(Random.Range(-maxOffsetDistance, maxOffsetDistance), 0, 0)));
+            StartCoroutine(spawnZombeat());
         }
 
         pointsText.text = " POINTS: " + points.ToString();
@@ -38,17 +40,22 @@ public class zombeatManager : MonoBehaviour
         maxNumZombies = 3 * (1 + Mathf.RoundToInt(difficultyNumber * .15f));
     }
 
-    IEnumerator spawnZombeat(Vector3 spawnPos)
+    IEnumerator spawnZombeat()
     {
         canSpawn = false;
-        currentZombeat = Instantiate(zombeatPrefab, spawnPoint.transform.position + new Vector3(Random.Range(-maxOffsetDistance, maxOffsetDistance), 0, 0), Quaternion.identity, GameObject.Find("WorldSpaceImages").transform);
-        currentZombeat.GetComponent<zombeatAI>().createZombeat(difficultyNumber);
+
+        Vector3 offset = new Vector3(Random.Range(-maxOffsetDistance, maxOffsetDistance),0,0);
+
+        currentZombeat = Instantiate(zombeatPrefab, spawnPoint.transform.position + offset, Quaternion.identity, worldSpaceImages.transform);
+        currentZombeat.name = "Zombeat (" + zombeats.Count + ")";
+        yield return new WaitForEndOfFrame();
         zombeats.Add(currentZombeat);
+        
         yield return new WaitForSeconds(timeBetweenSpawns);
         canSpawn = true;
     }
 
-    void regenerateTempZombeat()
+    /*void regenerateTempZombeat()
     {
         if (Input.GetKeyDown(KeyCode.F1))
         {
@@ -59,8 +66,9 @@ public class zombeatManager : MonoBehaviour
 
             currentZombeat = Instantiate(zombeatPrefab, spawnPoint.transform.position + new Vector3(Random.Range(-maxOffsetDistance, maxOffsetDistance), 0, 0), Quaternion.identity, GameObject.Find("WorldSpaceImages").transform);
             currentZombeat.GetComponent<zombeatAI>().createZombeat(difficultyNumber);
+            
             zombeats.Add(currentZombeat);
         }
-    }
+    }*/
 
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class playerManager : MonoBehaviour
 {
@@ -34,6 +35,7 @@ public class playerManager : MonoBehaviour
 
     public void OnEnable() {
         classSelectHolder.GetComponent<classSelectHolder>();
+        Application.targetFrameRate = 60;
 
         imageScale = new Vector3(targetSigil.transform.localScale.x, targetSigil.transform.localScale.y, targetSigil.transform.localScale.z);
         startingScale = targetSigil.transform.localScale.x;
@@ -65,12 +67,17 @@ public class playerManager : MonoBehaviour
         animateUI();
         targetZombeat();
 
-        /*if (zombeatTargeted.GetComponent<zombeatAI>().tier == chordWeight.light) lightChordControls.SetActive(true);
+        if (health <= 0) SceneManager.LoadScene(1);
+
+        if (zombeatTargeted == null) return;
+        if (zombeatTargeted.GetComponent<zombeatAI>().tier == chordWeight.light) lightChordControls.SetActive(true);
         else lightChordControls.SetActive(false);
         if (zombeatTargeted.GetComponent<zombeatAI>().tier == chordWeight.medium) medChordControls.SetActive(true);
         else medChordControls.SetActive(false);
         if (zombeatTargeted.GetComponent<zombeatAI>().tier == chordWeight.heavy) HeavyChordControls.SetActive(true);
-        else HeavyChordControls.SetActive(false);*/
+        else HeavyChordControls.SetActive(false);
+
+
     }
 
     void targetZombeat()

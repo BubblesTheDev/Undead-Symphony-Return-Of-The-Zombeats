@@ -25,7 +25,7 @@ public class enviromentChanger : MonoBehaviour
         randomInt = Random.Range(0, possibleEnviroments.Length);
 
         float offset = 0;
-        for (int i = 0; i < 50; i++)
+        for (int i = 0; i < 10; i++)
         {
             switch (randomInt)
             {

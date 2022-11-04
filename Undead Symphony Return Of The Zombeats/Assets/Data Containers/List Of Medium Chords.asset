@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 370419db37e60c745afcd40079ec3db6, type: 3}
   m_Name: List Of Medium Chords
   m_EditorClassIdentifier: 
-  chordWeights: 0
+  chordWeights: 1
   possibleChords:
-  - chordElement: 0
+  - chordElement: 2
     weight: 1
     notesForChord:
     - Colour: 2
@@ -23,7 +23,7 @@ MonoBehaviour:
       noteSprite: {fileID: 21300000, guid: 39d6ab5b5cf69684abd5fc3aaf589a6e, type: 3}
     - Colour: 2
       noteSprite: {fileID: 21300000, guid: 92a6c86dfd8ab054ebb01a3557f14ccb, type: 3}
-  - chordElement: 0
+  - chordElement: 2
     weight: 1
     notesForChord:
     - Colour: 2
@@ -32,7 +32,7 @@ MonoBehaviour:
       noteSprite: {fileID: 21300000, guid: 003a899aea009824e8cbc07144dac4e1, type: 3}
     - Colour: 2
       noteSprite: {fileID: 21300000, guid: 92a6c86dfd8ab054ebb01a3557f14ccb, type: 3}
-  - chordElement: 2
+  - chordElement: 0
     weight: 1
     notesForChord:
     - Colour: 0
@@ -41,7 +41,7 @@ MonoBehaviour:
       noteSprite: {fileID: 21300000, guid: 003a899aea009824e8cbc07144dac4e1, type: 3}
     - Colour: 0
       noteSprite: {fileID: 21300000, guid: 39d6ab5b5cf69684abd5fc3aaf589a6e, type: 3}
-  - chordElement: 2
+  - chordElement: 0
     weight: 1
     notesForChord:
     - Colour: 0

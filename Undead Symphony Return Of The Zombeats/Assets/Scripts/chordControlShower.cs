@@ -17,7 +17,7 @@ public class chordControlShower : MonoBehaviour
             chordControlObj[i].GetComponentInChildren<TMP_Text>().text = chordListReference.possibleChords[i + indexOffset].chordElement.ToString().ToUpper() + " CHORD: ";
 
             notes = chordControlObj[i].GetComponentsInChildren<Image>();
-            for (int x = 0; x < notes.Length; x++)
+            for (int x = 1; x < notes.Length; x++)
             {
                 notes[x].sprite = chordListReference.possibleChords[i + indexOffset].notesForChord[x].noteSprite;
             }

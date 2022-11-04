@@ -64,6 +64,7 @@ public class musicPlayer : MonoBehaviour
         StartCoroutine(manager.playerAnim.playAnim());
         manager.playerAttack.Play();
         zombeat.GetComponent<zombeatAI>().takeDamage(currentDamageStoredOnZombeat);
+        currentDamageStoredOnZombeat = 0;
         //Debug.Log("Attacked Zombeat " + zombeat.name + " with " + currentDamageStoredOnZombeat + " damage");
     }
 
@@ -72,7 +73,7 @@ public class musicPlayer : MonoBehaviour
         if (recentNotes.Count >= 3)
         {
             //Debug.Log("Compare Chords");
-            foreach (chord possibleChord in chordListLight.possibleChords)
+            if(manager.zombeatTargeted.GetComponent<zombeatAI>().tier == chordWeight.light) foreach (chord possibleChord in chordListLight.possibleChords)
             {
                 if (possibleChord.notesForChord[0].Colour == recentNotes[0].Colour
                     && possibleChord.notesForChord[1].Colour == recentNotes[1].Colour
@@ -84,20 +85,26 @@ public class musicPlayer : MonoBehaviour
                     {
                         case elements.Metal:
                             spreader.addAnotherNote(0);
+                            currentDamageStoredOnZombeat++;
+                            manager.zombeatTargeted.GetComponent<zombeatAI>().text.text = "DMG: " + (currentDamageStoredOnZombeat + 1);
                             break;
                         case elements.Fire:
                             spreader.addAnotherNote(1);
+                            currentDamageStoredOnZombeat++;
+
+                            manager.zombeatTargeted.GetComponent<zombeatAI>().text.text = "DMG: " + (currentDamageStoredOnZombeat + 1);
 
                             break;
                         case elements.Electricity:
                             spreader.addAnotherNote(2);
-
+                            currentDamageStoredOnZombeat++;
+                            manager.zombeatTargeted.GetComponent<zombeatAI>().text.text = "DMG: " + (currentDamageStoredOnZombeat + 1);
                             break;
                     }
                     currentChordCombo++;
                 } else manager.wrongChord.Play();
             }
-            foreach (chord possibleChord in chordListMed.possibleChords)
+            else if (manager.zombeatTargeted.GetComponent<zombeatAI>().tier == chordWeight.medium) foreach (chord possibleChord in chordListMed.possibleChords)
             {
                 if (possibleChord.notesForChord[0].Colour == recentNotes[0].Colour
                     && possibleChord.notesForChord[1].Colour == recentNotes[1].Colour
@@ -109,21 +116,25 @@ public class musicPlayer : MonoBehaviour
                     {
                         case elements.Metal:
                             spreader.addAnotherNote(0+3);
+                            currentDamageStoredOnZombeat++;
+                            manager.zombeatTargeted.GetComponent<zombeatAI>().text.text = "DMG: " + (currentDamageStoredOnZombeat + 1);
                             break;
                         case elements.Fire:
                             spreader.addAnotherNote(1 + 3);
-
+                            currentDamageStoredOnZombeat++;
+                            manager.zombeatTargeted.GetComponent<zombeatAI>().text.text = "DMG: " + (currentDamageStoredOnZombeat + 1);
                             break;
                         case elements.Electricity:
                             spreader.addAnotherNote(2 + 3);
-
+                            currentDamageStoredOnZombeat++;
+                            manager.zombeatTargeted.GetComponent<zombeatAI>().text.text = "DMG: " + (currentDamageStoredOnZombeat + 1);
                             break;
                     }
                     currentChordCombo++;
                 }
                 else manager.wrongChord.Play();
             }
-            foreach (chord possibleChord in chordListHeavy.possibleChords)
+            else if (manager.zombeatTargeted.GetComponent<zombeatAI>().tier == chordWeight.heavy) foreach (chord possibleChord in chordListHeavy.possibleChords)
             {
                 if (possibleChord.notesForChord[0].Colour == recentNotes[0].Colour
                     && possibleChord.notesForChord[1].Colour == recentNotes[1].Colour
@@ -135,14 +146,18 @@ public class musicPlayer : MonoBehaviour
                     {
                         case elements.Metal:
                             spreader.addAnotherNote(0+6);
+                            currentDamageStoredOnZombeat++;
+                            manager.zombeatTargeted.GetComponent<zombeatAI>().text.text = "DMG: " + (currentDamageStoredOnZombeat + 1);
                             break;
                         case elements.Fire:
                             spreader.addAnotherNote(1 + 6);
-
+                            currentDamageStoredOnZombeat++;
+                            manager.zombeatTargeted.GetComponent<zombeatAI>().text.text = "DMG: " + (currentDamageStoredOnZombeat + 1);
                             break;
                         case elements.Electricity:
                             spreader.addAnotherNote(2 + 6);
-
+                            currentDamageStoredOnZombeat++;
+                            manager.zombeatTargeted.GetComponent<zombeatAI>().text.text = "DMG: " + (currentDamageStoredOnZombeat + 1);
                             break;
                     }
                     currentChordCombo++;
@@ -164,17 +179,50 @@ public class musicPlayer : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.A))
         {
             recentNotes.Add(new note(buttonColour.green));
+            switch (recentNotes.Count-1) {
+                case 0:
+                recentNotes[0].noteSprite = noteSprites[0];
+                break;
+                case 1:
+                recentNotes[1].noteSprite = noteSprites[1];
+                break;
+                case 2:
+                recentNotes[2].noteSprite = noteSprites[2];
+                break;
+            }
             if (noteImages[recentNotes.Count-1].sprite == transparent) noteImages[recentNotes.Count-1].sprite = noteSprites[0];
         }
         if (Input.GetKeyUp(KeyCode.S))
         {
             recentNotes.Add(new note(buttonColour.red));
-            if (noteImages[recentNotes.Count-1].sprite == transparent) noteImages[recentNotes.Count-1].sprite = noteSprites[2];
+            switch (recentNotes.Count-1) {
+                case 0:
+                recentNotes[0].noteSprite = noteSprites[0];
+                break;
+                case 1:
+                recentNotes[1].noteSprite = noteSprites[1];
+                break;
+                case 2:
+                recentNotes[2].noteSprite = noteSprites[2];
+                break;
+            }
+            if (noteImages[recentNotes.Count-1].sprite == transparent) noteImages[recentNotes.Count-1].sprite = noteSprites[1];
         }
         if (Input.GetKeyUp(KeyCode.D))
         {
             recentNotes.Add(new note(buttonColour.blue));
-            if (noteImages[recentNotes.Count-1].sprite == transparent) noteImages[recentNotes.Count-1].sprite = noteSprites[3];
+            switch (recentNotes.Count-1) {
+                case 0:
+                recentNotes[0].noteSprite = noteSprites[0];
+                break;
+                case 1:
+                recentNotes[1].noteSprite = noteSprites[1];
+                break;
+                case 2:
+                recentNotes[2].noteSprite = noteSprites[2];
+                break;
+            }
+            if (noteImages[recentNotes.Count-1].sprite == transparent) noteImages[recentNotes.Count-1].sprite = noteSprites[2];
         }
     }
 
@@ -197,15 +245,15 @@ public class musicPlayer : MonoBehaviour
 public enum elements
 {
     Metal,
-    Electricity,
-    Fire
+    Fire,
+    Electricity
 }
 
 public enum buttonColour
 {
+    green,
     red,
-    blue,
-    green
+    blue
 }
 
 public enum chordWeight
