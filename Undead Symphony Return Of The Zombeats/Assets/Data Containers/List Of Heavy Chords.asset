@@ -13,4 +13,58 @@ MonoBehaviour:
   m_Name: List Of Heavy Chords
   m_EditorClassIdentifier: 
   chordWeights: 0
-  possibleChords: []
+  possibleChords:
+  - chordElement: 0
+    weight: 2
+    notesForChord:
+    - Colour: 2
+      noteSprite: {fileID: 21300000, guid: 83a0919b355ffb4479d41b45392e66c6, type: 3}
+    - Colour: 0
+      noteSprite: {fileID: 21300000, guid: 1da9c8246f23ac24fb2d4cef3a45393e, type: 3}
+    - Colour: 1
+      noteSprite: {fileID: 21300000, guid: a4d2297018f3a8e4a822ef376fd16457, type: 3}
+  - chordElement: 0
+    weight: 2
+    notesForChord:
+    - Colour: 2
+      noteSprite: {fileID: 21300000, guid: 83a0919b355ffb4479d41b45392e66c6, type: 3}
+    - Colour: 1
+      noteSprite: {fileID: 21300000, guid: a4d2297018f3a8e4a822ef376fd16457, type: 3}
+    - Colour: 0
+      noteSprite: {fileID: 21300000, guid: 1da9c8246f23ac24fb2d4cef3a45393e, type: 3}
+  - chordElement: 2
+    weight: 2
+    notesForChord:
+    - Colour: 0
+      noteSprite: {fileID: 21300000, guid: 1da9c8246f23ac24fb2d4cef3a45393e, type: 3}
+    - Colour: 1
+      noteSprite: {fileID: 21300000, guid: a4d2297018f3a8e4a822ef376fd16457, type: 3}
+    - Colour: 2
+      noteSprite: {fileID: 21300000, guid: 83a0919b355ffb4479d41b45392e66c6, type: 3}
+  - chordElement: 2
+    weight: 2
+    notesForChord:
+    - Colour: 0
+      noteSprite: {fileID: 21300000, guid: 1da9c8246f23ac24fb2d4cef3a45393e, type: 3}
+    - Colour: 2
+      noteSprite: {fileID: 21300000, guid: 83a0919b355ffb4479d41b45392e66c6, type: 3}
+    - Colour: 1
+      noteSprite: {fileID: 21300000, guid: a4d2297018f3a8e4a822ef376fd16457, type: 3}
+  - chordElement: 1
+    weight: 2
+    notesForChord:
+    - Colour: 1
+      noteSprite: {fileID: 21300000, guid: a4d2297018f3a8e4a822ef376fd16457, type: 3}
+    - Colour: 2
+      noteSprite: {fileID: 21300000, guid: 83a0919b355ffb4479d41b45392e66c6, type: 3}
+    - Colour: 0
+      noteSprite: {fileID: 21300000, guid: 1da9c8246f23ac24fb2d4cef3a45393e, type: 3}
+  - chordElement: 1
+    weight: 2
+    notesForChord:
+    - Colour: 1
+      noteSprite: {fileID: 21300000, guid: a4d2297018f3a8e4a822ef376fd16457, type: 3}
+    - Colour: 0
+      noteSprite: {fileID: 21300000, guid: 1da9c8246f23ac24fb2d4cef3a45393e, type: 3}
+    - Colour: 2
+      noteSprite: {fileID: 21300000, guid: 83a0919b355ffb4479d41b45392e66c6, type: 3}
